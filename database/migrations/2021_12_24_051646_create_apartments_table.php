@@ -14,7 +14,15 @@ class CreateApartmentsTable extends Migration
     public function up()
     {
         Schema::create('apartments', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->integer('floor_No');
+            $table->integer('rooms_num');
+            $table->double('space_apart');
+            $table->double('num_floors_building');
+            $table->string('addres');
+            $table->string('price');
+            $table->string('more_details');
+            $table->foreign('id_category')->references('id')->on('categories');
             $table->timestamps();
         });
     }

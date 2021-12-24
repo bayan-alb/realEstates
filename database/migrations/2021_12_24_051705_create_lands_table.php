@@ -14,7 +14,11 @@ class CreateLandsTable extends Migration
     public function up()
     {
         Schema::create('lands', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->double('land_space');
+            $table->string('addres');
+            $table->string('price');
+            $table->foreign('id_category')->references('id')->on('categories');
             $table->timestamps();
         });
     }
